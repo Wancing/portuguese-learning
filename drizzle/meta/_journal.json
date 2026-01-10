@@ -1,0 +1,48 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1767214936513,
+      "tag": "0000_panoramic_silver_samurai",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1767215071618,
+      "tag": "0001_graceful_forgotten_one",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1767216284382,
+      "tag": "0002_orange_gwen_stacy",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1767216849586,
+      "tag": "0003_fixed_magus",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1767217194863,
+      "tag": "0004_outgoing_white_tiger",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1767241215891,
+      "tag": "0005_magenta_miracleman",
+      "breakpoints": true
+    }
+  ]
+}
