@@ -15,7 +15,12 @@ interface ConversationTurn {
 
 export default function ConversationPractice() {
   const [, navigate] = useLocation();
-  const { user, isAuthenticated } = useAuth();
+const user = null;
+const isAuthenticated = false;
+// Redirect to home if accessed directly
+if (typeof window !== 'undefined') {
+  window.location.href = '/';
+}
   const [topic, setTopic] = useState("ordering at a restaurant");
   const [difficulty, setDifficulty] = useState<"beginner" | "intermediate" | "advanced">("beginner");
   const [sessionStarted, setSessionStarted] = useState(false);

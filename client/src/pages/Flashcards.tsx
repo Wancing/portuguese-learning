@@ -1,4 +1,3 @@
-import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -7,21 +6,22 @@ import { trpc } from "@/lib/trpc";
 import { useLocation } from "wouter";
 import { toast } from "sonner";
 import { Loader2, Plus, Trash2 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Flashcards() {
-  const { user, isAuthenticated } = useAuth();
+  const user = null; // Bypass auth for demo
+  const isAuthenticated = false;
   const [, navigate] = useLocation();
   const [showStudy, setShowStudy] = useState(false);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [newCardForm, setNewCardForm] = useState({ front: "", back: "" });
 
-  // Redirect if not authenticated
-  if (!isAuthenticated) {
-    navigate("/login");
-    return null;
-  }
+  // Redirect if not authenticated (demo: disabled)
+  // if (!isAuthenticated) {
+  //   navigate("/login");
+  //   return null;
+  // }
 
   const { data: dueCards, isLoading: isDueLoading, refetch: refetchDue } = trpc.flashcards.getDueCards.useQuery();
   const { data: allCards, isLoading: isAllLoading } = trpc.flashcards.getAllCards.useQuery();

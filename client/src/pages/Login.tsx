@@ -11,7 +11,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 
 export default function Login() {
   const [, navigate] = useLocation();
-  const { isAuthenticated } = useAuth();
+  const isAuthenticated = false;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);

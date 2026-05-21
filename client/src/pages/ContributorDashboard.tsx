@@ -12,7 +12,13 @@ import { Loader2, Upload } from "lucide-react";
 import { useState } from "react";
 
 export default function ContributorDashboard() {
-  const { user, isAuthenticated } = useAuth();
+  const user = null;
+const isAuthenticated = false;
+const loading = false;
+// Redirect to home if accessed directly
+if (typeof window !== 'undefined') {
+  window.location.href = '/';
+}
   const [, navigate] = useLocation();
   const [isUploading, setIsUploading] = useState(false);
   const [formData, setFormData] = useState({

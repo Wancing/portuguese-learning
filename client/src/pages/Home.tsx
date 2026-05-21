@@ -8,8 +8,13 @@ import { Loader2, Volume2, Sparkles } from "lucide-react";
 export default function Home() {
   const [, navigate] = useLocation();
   const { data: categories, isLoading } = trpc.categories.list.useQuery();
-  const { user } = useAuth();
-
+let user = null;
+try {
+  const auth = useAuth();
+  user = auth?.user || null;
+} catch (e) {
+  console.warn('Auth not available:', e);
+}  
   return (
     <div className="min-h-screen memphis-bg">
       {/* Navigation links for authorized users */}

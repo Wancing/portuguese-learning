@@ -2,18 +2,17 @@ import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useParams, useLocation } from "wouter";
-import { Loader2, ArrowLeft, Volume2, Mic, Square, Play, Sparkles } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
-import { useAuth } from "@/_core/hooks/useAuth";
-import { getLoginUrl } from "@/const";
+import { Loader2, ArrowLeft, Volume2, Mic, Square, Sparkles } from "lucide-react";
+import { useState, useRef } from "react";
 import { toast } from "sonner";
 
 export default function Phrase() {
   const params = useParams<{ id: string }>();
   const [, navigate] = useLocation();
   const phraseId = parseInt(params.id || "0");
-  const { user, isAuthenticated } = useAuth();
-
+  const user = null; // Bypass auth for demo
+  const isAuthenticated = false;
+  
   const { data: phrase, isLoading: phraseLoading } = trpc.phrases.getById.useQuery({ id: phraseId });
   const { data: recordings, refetch: refetchRecordings } = trpc.recordings.getByPhrase.useQuery(
     { phraseId },
@@ -48,8 +47,6 @@ export default function Phrase() {
 
   // Native audio playback
   const nativeAudioRef = useRef<HTMLAudioElement | null>(null);
-
-
 
   const playNativeAudio = () => {
     if (nativeAudioRef.current) {
@@ -191,14 +188,12 @@ export default function Phrase() {
           </CardContent>
         </Card>
 
-        {/* Recording Section */}
+        {/* Recording Section - Hidden for demo since auth is disabled */}
         {!isAuthenticated ? (
           <Card className="border-2 mb-8">
             <CardContent className="py-12 text-center">
-              <p className="text-lg mb-4">Sign in to practice pronunciation</p>
-              <Button asChild className="btn-shadow">
-                <a href={getLoginUrl()}>Sign In</a>
-              </Button>
+              <p className="text-lg mb-4">Recording feature available with authentication</p>
+              <p className="text-muted-foreground">This demo focuses on browsing phrases and categories</p>
             </CardContent>
           </Card>
         ) : (

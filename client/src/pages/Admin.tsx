@@ -11,7 +11,13 @@ import { toast } from "sonner";
 import { useLocation } from "wouter";
 
 export default function Admin() {
-  const { user, isAuthenticated, loading } = useAuth();
+const user = null;
+const isAuthenticated = false;
+const loading = false;
+// Redirect to home if accessed directly
+if (typeof window !== 'undefined') {
+  window.location.href = '/';
+}
   const [, navigate] = useLocation();
   const [uploadingPhraseId, setUploadingPhraseId] = useState<number | null>(null);
 

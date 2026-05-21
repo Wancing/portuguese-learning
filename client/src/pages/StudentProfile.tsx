@@ -9,7 +9,12 @@ import { toast } from "sonner";
 
 export default function StudentProfile() {
   const [, navigate] = useLocation();
-  const { user, isAuthenticated } = useAuth();
+const user = null;
+const isAuthenticated = false;
+// Redirect to home if accessed directly
+if (typeof window !== 'undefined') {
+  window.location.href = '/';
+}
   const [badges, setBadges] = useState<any[]>([]);
 
   const { data: userBadges, isLoading: badgesLoading } = trpc.badges.getUserBadges.useQuery(
