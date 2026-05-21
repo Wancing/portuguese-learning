@@ -140,4 +140,5 @@ Built by [Wancing](https://github.com/Wancing) as a portfolio project focused on
 
 ## License
 
-Choose a license before publishing broadly. A common option for portfolio projects is the MIT License.
+MIT License
+
