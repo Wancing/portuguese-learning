@@ -1,20 +1,28 @@
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Link, useLocation } from "wouter";
 import { Loader2, Volume2, Sparkles } from "lucide-react";
 
 export default function Home() {
   const [, navigate] = useLocation();
   const { data: categories, isLoading } = trpc.categories.list.useQuery();
-let user = null;
-try {
-  const auth = useAuth();
-  user = auth?.user || null;
-} catch (e) {
-  console.warn('Auth not available:', e);
-}  
+
+  let user = null;
+  try {
+    const auth = useAuth();
+    user = auth?.user || null;
+  } catch (e) {
+    console.warn("Auth not available:", e);
+  }
+
   return (
     <div className="min-h-screen memphis-bg">
       {/* Navigation links for authorized users */}
@@ -28,7 +36,7 @@ try {
             Flashcards
           </Button>
         )}
-        {user?.role === 'contributor' || user?.role === 'admin' ? (
+        {user?.role === "contributor" || user?.role === "admin" ? (
           <Button
             onClick={() => navigate("/contributor")}
             variant="outline"
@@ -37,7 +45,7 @@ try {
             Contributor
           </Button>
         ) : null}
-        {user?.role === 'admin' && (
+        {user?.role === "admin" && (
           <Button
             onClick={() => navigate("/admin")}
             variant="outline"
@@ -47,11 +55,24 @@ try {
           </Button>
         )}
       </div>
+
       {/* Geometric decorations */}
-      <div className="geometric-shape shape-circle w-16 h-16 border-[#FF6B9D] top-20 left-10 hidden lg:block" style={{ borderColor: 'oklch(0.65 0.18 340)' }} />
-      <div className="geometric-shape shape-circle w-24 h-24 border-[#A8E6CF] top-40 right-20 hidden lg:block" style={{ borderColor: 'oklch(0.75 0.08 160)' }} />
-      <div className="geometric-shape shape-circle w-12 h-12 border-[#FFD93D] bottom-32 left-1/4 hidden lg:block" style={{ borderColor: 'oklch(0.85 0.12 85)' }} />
-      <div className="geometric-shape shape-circle w-20 h-20 border-[#C4A1FF] bottom-20 right-1/3 hidden lg:block" style={{ borderColor: 'oklch(0.78 0.08 270)' }} />
+      <div
+        className="geometric-shape shape-circle w-16 h-16 border-[#FF6B9D] top-20 left-10 hidden lg:block"
+        style={{ borderColor: "oklch(0.65 0.18 340)" }}
+      />
+      <div
+        className="geometric-shape shape-circle w-24 h-24 border-[#A8E6CF] top-40 right-20 hidden lg:block"
+        style={{ borderColor: "oklch(0.75 0.08 160)" }}
+      />
+      <div
+        className="geometric-shape shape-circle w-12 h-12 border-[#FFD93D] bottom-32 left-1/4 hidden lg:block"
+        style={{ borderColor: "oklch(0.85 0.12 85)" }}
+      />
+      <div
+        className="geometric-shape shape-circle w-20 h-20 border-[#C4A1FF] bottom-20 right-1/3 hidden lg:block"
+        style={{ borderColor: "oklch(0.78 0.08 270)" }}
+      />
 
       {/* Hero Section */}
       <div className="container py-12 md:py-20 relative z-10">
@@ -60,7 +81,8 @@ try {
             Learn European Portuguese
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-medium">
-            Master everyday conversations with interactive audio practice and AI-powered pronunciation feedback
+            Master everyday conversations with interactive audio practice and
+            AI-powered pronunciation feedback
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Button
@@ -85,18 +107,25 @@ try {
 
         {/* Additional Features */}
         <div className="grid md:grid-cols-2 gap-6 mb-16">
-          <Card className="btn-shadow border-2 hover:scale-105 transition-transform cursor-pointer" onClick={() => navigate("/conversations")}>
+          <Card
+            className="btn-shadow border-2 hover:scale-105 transition-transform cursor-pointer"
+            onClick={() => navigate("/conversations")}
+          >
             <CardHeader>
               <CardTitle>Conversation Practice</CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>
-                Practice real conversations with an AI partner. Get feedback on your responses.
+                Practice real conversations with an AI partner. Get feedback on
+                your responses.
               </CardDescription>
             </CardContent>
           </Card>
 
-          <Card className="btn-shadow border-2 hover:scale-105 transition-transform cursor-pointer" onClick={() => navigate("/profile")}>
+          <Card
+            className="btn-shadow border-2 hover:scale-105 transition-transform cursor-pointer"
+            onClick={() => navigate("/profile")}
+          >
             <CardHeader>
               <CardTitle>Your Profile</CardTitle>
             </CardHeader>
@@ -121,7 +150,8 @@ try {
             </CardHeader>
             <CardContent>
               <CardDescription className="text-base">
-                Browse phrases organized by real-life scenarios: greetings, shopping, dining, travel, and more.
+                Browse phrases organized by real-life scenarios: greetings,
+                shopping, dining, travel, and more.
               </CardDescription>
             </CardContent>
           </Card>
@@ -137,12 +167,17 @@ try {
             </CardHeader>
             <CardContent>
               <CardDescription className="text-base">
-                Record your pronunciation and compare it side-by-side with native speaker audio.
+                Record your pronunciation and compare it side-by-side with
+                native speaker audio.
               </CardDescription>
             </CardContent>
           </Card>
 
-          <Card className="btn-shadow border-2">
+          {/* AI Feedback card now navigates to /grammar */}
+          <Card
+            className="btn-shadow border-2 hover:scale-105 transition-transform cursor-pointer"
+            onClick={() => navigate("/grammar")}
+          >
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-accent-foreground">
@@ -153,7 +188,8 @@ try {
             </CardHeader>
             <CardContent>
               <CardDescription className="text-base">
-                Get personalized pronunciation tips and transcription comparison powered by AI.
+                Get personalized grammar corrections and explanations powered by
+                AI.
               </CardDescription>
             </CardContent>
           </Card>
@@ -161,20 +197,24 @@ try {
 
         {/* Categories Section */}
         <div className="mb-12">
-          <h2 className="text-4xl font-bold mb-8 text-center">Browse by Category</h2>
-          
+          <h2 className="text-4xl font-bold mb-8 text-center">
+            Browse by Category
+          </h2>
+
           {isLoading ? (
             <div className="flex justify-center items-center py-12">
               <Loader2 className="h-8 w-8 animate-spin text-primary" />
             </div>
           ) : categories && categories.length > 0 ? (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {categories.map((category) => (
+              {categories.map(category => (
                 <Link key={category.id} href={`/category/${category.id}`}>
                   <Card className="btn-shadow border-2 hover:scale-105 transition-transform cursor-pointer h-full">
                     <CardHeader>
                       <CardTitle className="flex items-center gap-3">
-                        <span className="text-3xl">{category.icon || "📚"}</span>
+                        <span className="text-3xl">
+                          {category.icon || "📚"}
+                        </span>
                         <div>
                           <div className="text-xl">{category.name}</div>
                           <div className="text-sm font-normal text-muted-foreground normal-case">
