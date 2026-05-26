@@ -15,6 +15,7 @@ import ContributorDashboard from "./pages/ContributorDashboard";
 import HowItWorks from "./pages/HowItWorks";
 import ConversationPractice from "./pages/ConversationPractice";
 import StudentProfile from "./pages/StudentProfile";
+import GrammarFeedback from "./pages/GrammarFeedback";
 
 function Router() {
   return (
@@ -27,6 +28,7 @@ function Router() {
       <Route path={"/how-it-works"} component={HowItWorks} />
       <Route path={"/conversations"} component={ConversationPractice} />
       <Route path={"/profile"} component={StudentProfile} />
+      <Route path={"/grammar"} component={GrammarFeedback} />
       <Route path={"/admin"} component={Admin} />
       <Route path={"/category/:id"} component={Category} />
       <Route path={"/phrase/:id"} component={Phrase} />
