@@ -10,6 +10,7 @@ import { invokeLLM } from "./_core/llm";
 import { nanoid } from "nanoid";
 import { flashcardRouter, contributorRouter } from "./flashcard-router";
 import { badgesRouter, conversationRouter } from "./badges-router";
+import { grammarRouter } from "./grammar-router";
 
 export const appRouter = router({
   system: systemRouter,
@@ -17,6 +18,7 @@ export const appRouter = router({
   contributors: contributorRouter,
   badges: badgesRouter,
   conversations: conversationRouter,
+  grammar: grammarRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     login: publicProcedure
