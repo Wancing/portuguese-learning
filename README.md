@@ -7,7 +7,18 @@ A full-stack European Portuguese learning app with **AI-powered grammar feedback
 **[https://portuguese-learning-production.up.railway.app](https://portuguese-learning-production.up.railway.app)**
 
 ---
+### May 2026 – AI grammar feedback update
 
+- Added an **AI-powered grammar feedback page** (`/grammar`) that gives:
+  - Instant corrections for European Portuguese sentences
+  - Error tags (e.g. tense, word order, agreement) with colour-coded badges
+  - A detailed explanation of corrections and a follow-up practice sentence
+- Wired the grammar feature to an **LLM backend** via a shared `invokeLLM` helper:
+  - Normalises messages, tool calls and response formats
+  - Uses a structured JSON schema for consistent outputs
+- Restored the **category selector** on the grammar page so users can tag sentences (e.g. grammar / vocabulary / phrases), ready for future filtering and analytics.
+  
+- Confirmed the app runs end-to-end with the existing Railway MySQL database and OpenAI-compatible LLM, suitable for portfolio demos.
 ## ✨ AI Grammar Feedback (Featured)
 
 The headline AI feature of this project. Available at `/grammar`.
